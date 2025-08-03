@@ -12,8 +12,23 @@ logger = logging.getLogger(__name__)
 
 def fix_datanode_url(url):
     """Replace hostname with IP address in DataNode URLs"""
-    # Replace quickstart.cloudera with the IP address
-    fixed_url = url.replace('quickstart.cloudera', '192.168.0.184')
+    # Get the current HDFS IP
+    config = Config()
+    current_ip = config.get_hdfs_ip()
+    
+    # Replace quickstart.cloudera with the current IP address
+    fixed_url = url.replace('quickstart.cloudera', current_ip)
+    
+    # Also replace any other hostnames that might be in the URL
+    # Extract IP from URL if it contains a different IP
+    import re
+    ip_pattern = r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b'
+    ips_in_url = re.findall(ip_pattern, url)
+    
+    for old_ip in ips_in_url:
+        if old_ip != current_ip:
+            fixed_url = fixed_url.replace(old_ip, current_ip)
+    
     return fixed_url
 
 def normalize_hdfs_path(hdfs_path):
@@ -41,7 +56,8 @@ def download_hdfs_file(hdfs_path):
         normalized_path = normalize_hdfs_path(hdfs_path)
         
         # Use WebHDFS to read the file
-        webhdfs_url = f"{Config.HDFS_URL}/webhdfs/v1{normalized_path}?op=OPEN&user.name={Config.HDFS_USER}"
+        config = Config()
+        webhdfs_url = f"{config.HDFS_URL}/webhdfs/v1{normalized_path}?op=OPEN&user.name={Config.HDFS_USER}"
         
         response = requests.get(webhdfs_url, stream=True, allow_redirects=False)
         

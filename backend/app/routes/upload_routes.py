@@ -19,7 +19,8 @@ def upload_file():
     file.save(file_path)
     # Upload to HDFS
     hdfs_path = f'/uploads/{file.filename}'
-    hdfs_uri = f'{Config.HDFS_URI_PREFIX}{hdfs_path}'
+    config = Config()
+    hdfs_uri = f'{config.HDFS_URI_PREFIX}{hdfs_path}'
     try:
         upload_to_hdfs(file_path, hdfs_path)
     except Exception as e:

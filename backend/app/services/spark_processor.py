@@ -46,8 +46,9 @@ def analyze_hdfs_file(hdfs_path):
         logger.info(f"Starting analysis for HDFS path: {hdfs_path}")
         
         # Build the full HDFS URI
+        config = Config()
         if not hdfs_path.startswith('hdfs://'):
-            full_hdfs_path = f"{Config.HDFS_URI_PREFIX}{hdfs_path}"
+            full_hdfs_path = f"{config.HDFS_URI_PREFIX}{hdfs_path}"
         else:
             full_hdfs_path = hdfs_path
             

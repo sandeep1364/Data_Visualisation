@@ -8,7 +8,7 @@ def get_webhdfs_url(path, operation):
     """Build WebHDFS URL for a specific operation"""
     config = Config()
     base_url = config.HDFS_URL.rstrip('/')
-    return f"{base_url}/webhdfs/v1{path}?op={operation}&user.name={config.HDFS_USER}"
+    return f"{base_url}/webhdfs/v1{path}?op={operation}&user.name={Config.HDFS_USER}"
 
 def fix_datanode_url(url):
     """Replace hostname with IP address in DataNode URLs"""
@@ -80,7 +80,7 @@ def test_hdfs_connection():
     try:
         config = Config()
         ip = config.get_hdfs_ip()
-        url = f"http://{ip}:{config.WEBHDFS_PORT}/webhdfs/v1/?op=LISTSTATUS"
+        url = f"http://{ip}:{Config.WEBHDFS_PORT}/webhdfs/v1/?op=LISTSTATUS"
         
         response = requests.get(url, timeout=5)
         if response.status_code == 200:

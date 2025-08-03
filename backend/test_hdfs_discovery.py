@@ -19,10 +19,10 @@ def main():
     # Test dynamic IP discovery
     config = Config()
     print(f"📡 Attempting to discover HDFS server...")
-    print(f"🔧 Hostname: {config.HDFS_HOSTNAME}")
-    print(f"🔧 WebHDFS Port: {config.WEBHDFS_PORT}")
-    print(f"🔧 HDFS Port: {config.HDFS_PORT}")
-    print(f"👤 User: {config.HDFS_USER}")
+    print(f"🔧 Hostname: {Config.HDFS_HOSTNAME}")
+    print(f"🔧 WebHDFS Port: {Config.WEBHDFS_PORT}")
+    print(f"🔧 HDFS Port: {Config.HDFS_PORT}")
+    print(f"👤 User: {Config.HDFS_USER}")
     
     try:
         # Get discovered IP
@@ -51,7 +51,7 @@ def main():
             print(f"\n💡 Troubleshooting tips:")
             print(f"   1. Make sure your HDFS server is running")
             print(f"   2. Check if the server is accessible on the network")
-            print(f"   3. Verify WebHDFS is enabled on port {config.WEBHDFS_PORT}")
+            print(f"   3. Verify WebHDFS is enabled on port {Config.WEBHDFS_PORT}")
             print(f"   4. Try setting environment variables:")
             print(f"      export HDFS_HOSTNAME=your-server-hostname")
             print(f"      export HDFS_IP=your-server-ip")
