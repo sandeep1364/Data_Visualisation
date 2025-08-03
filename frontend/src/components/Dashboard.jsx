@@ -218,8 +218,8 @@ export default function Dashboard() {
     switch (currentTab) {
       case 0:
         return (
-          <Box>
-            <Grid container spacing={3}>
+          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Grid container spacing={3} sx={{ width: '100%', maxWidth: '100%' }}>
               <Grid item xs={12} md={6} lg={3}>
                 <Card sx={{ height: '100%' }}>
                   <CardContent>
@@ -345,14 +345,16 @@ export default function Dashboard() {
         );
       case 1:
         return (
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Data Upload
-              </Typography>
-              <FileUpload onUploadSuccess={handleUploadSuccess} />
-            </CardContent>
-          </Card>
+          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Card sx={{ width: '100%', maxWidth: '100%' }}>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  Data Upload
+                </Typography>
+                <FileUpload onUploadSuccess={handleUploadSuccess} />
+              </CardContent>
+            </Card>
+          </Box>
         );
       case 2:
         return (
@@ -469,15 +471,32 @@ export default function Dashboard() {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           mt: 8,
           minHeight: 'calc(100vh - 64px)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <Box sx={{ 
           width: '100%', 
           maxWidth: '100%',
-          height: '100%'
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          overflow: 'hidden',
         }}>
-          {loading && <LinearProgress sx={{ mb: 2 }} />}
-          {renderTabContent()}
+          {loading && <LinearProgress sx={{ mb: 2, width: '100%' }} />}
+          <Box sx={{ 
+            width: '100%', 
+            display: 'flex', 
+            justifyContent: 'center',
+            alignItems: 'center',
+            flex: 1,
+          }}>
+            {renderTabContent()}
+          </Box>
         </Box>
       </Box>
       

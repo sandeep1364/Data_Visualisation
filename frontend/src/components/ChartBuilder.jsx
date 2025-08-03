@@ -256,8 +256,8 @@ export default function ChartBuilder({ analytics }) {
   }
 
   return (
-    <Box>
-      <Grid container spacing={3}>
+    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <Grid container spacing={3} sx={{ width: '100%', maxWidth: '100%' }}>
         {/* Chart Controls */}
         <Grid item xs={12} lg={3} xl={2}>
           <Card sx={{ height: 'fit-content', position: 'sticky', top: 16 }}>
@@ -435,8 +435,8 @@ export default function ChartBuilder({ analytics }) {
 
         {/* Chart Display */}
         <Grid item xs={12} lg={9} xl={10}>
-          <Card>
-            <CardContent>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
                 <Typography variant="h6">Chart Preview</Typography>
                 <Button
@@ -449,49 +449,60 @@ export default function ChartBuilder({ analytics }) {
                 </Button>
               </Box>
               
-              {chartData ? (
-                <Paper sx={{ p: 2, bgcolor: '#fafafa' }} elevation={1}>
-                  <Plot
-                    data={chartData}
-                    layout={chartLayout}
-                    config={{
-                      responsive: true,
-                      displayModeBar: true,
-                      modeBarButtonsToRemove: ['pan2d', 'lasso2d', 'select2d'],
-                      displaylogo: false,
-                      toImageButtonOptions: {
-                        format: 'png',
-                        filename: 'chart',
-                        height: 800,
-                        width: 1200,
-                        scale: 2
-                      }
-                    }}
-                    style={{ width: '100%', height: '70vh', minHeight: '600px' }}
-                    useResizeHandler={true}
-                    onInitialized={(figure) => {
-                      // Force resize after initialization
-                      setTimeout(() => {
-                        window.dispatchEvent(new Event('resize'));
-                      }, 100);
-                    }}
-                  />
-                </Paper>
-              ) : (
-                <Box sx={{ 
-                  height: '70vh', 
-                  minHeight: '600px',
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  bgcolor: '#fafafa',
-                  borderRadius: 1
-                }}>
-                  <Typography color="text.secondary">
-                    Select chart type and columns to generate visualization
-                  </Typography>
-                </Box>
-              )}
+              <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                {chartData ? (
+                  <Paper sx={{ 
+                    p: 2, 
+                    bgcolor: '#fafafa',
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }} elevation={1}>
+                    <Plot
+                      data={chartData}
+                      layout={chartLayout}
+                      config={{
+                        responsive: true,
+                        displayModeBar: true,
+                        modeBarButtonsToRemove: ['pan2d', 'lasso2d', 'select2d'],
+                        displaylogo: false,
+                        toImageButtonOptions: {
+                          format: 'png',
+                          filename: 'chart',
+                          height: 800,
+                          width: 1200,
+                          scale: 2
+                        }
+                      }}
+                      style={{ width: '100%', height: '100%', minHeight: '600px' }}
+                      useResizeHandler={true}
+                      onInitialized={(figure) => {
+                        // Force resize after initialization
+                        setTimeout(() => {
+                          window.dispatchEvent(new Event('resize'));
+                        }, 100);
+                      }}
+                    />
+                  </Paper>
+                ) : (
+                  <Box sx={{ 
+                    width: '100%',
+                    height: '100%',
+                    minHeight: '600px',
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    bgcolor: '#fafafa',
+                    borderRadius: 1
+                  }}>
+                    <Typography color="text.secondary">
+                      Select chart type and columns to generate visualization
+                    </Typography>
+                  </Box>
+                )}
+              </Box>
             </CardContent>
           </Card>
         </Grid>

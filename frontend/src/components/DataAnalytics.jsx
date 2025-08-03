@@ -112,8 +112,8 @@ export default function DataAnalytics({ analytics, loading, onAnalyze, uploadDat
   };
 
   return (
-    <Box>
-      <Grid container spacing={3}>
+    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <Grid container spacing={3} sx={{ width: '100%', maxWidth: '100%' }}>
         {/* Summary Cards */}
         <Grid item xs={12} sm={6} md={3}>
           <Card>
