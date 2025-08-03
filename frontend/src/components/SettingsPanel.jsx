@@ -116,8 +116,18 @@ export default function SettingsPanel() {
   };
 
   return (
-    <Box>
-      <Grid container spacing={3}>
+    <Box sx={{ 
+      width: '100%', 
+      display: 'flex', 
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100%'
+    }}>
+      <Grid container spacing={3} sx={{ 
+        width: '100%', 
+        maxWidth: '1200px',
+        justifyContent: 'center'
+      }}>
         {/* Settings Header */}
         <Grid item xs={12}>
           <Card>

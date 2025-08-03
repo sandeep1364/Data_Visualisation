@@ -132,18 +132,40 @@ export default function SystemStatus({ status }) {
 
   if (loading) {
     return (
-      <Card>
-        <CardContent sx={{ textAlign: 'center', py: 4 }}>
-          <CircularProgress sx={{ mb: 2 }} />
-          <Typography variant="h6">Loading System Status...</Typography>
-        </CardContent>
-      </Card>
+      <Box sx={{ 
+        width: '100%', 
+        display: 'flex', 
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100%'
+      }}>
+        <Card sx={{ 
+          width: '100%', 
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}>
+          <CardContent sx={{ textAlign: 'center', py: 4 }}>
+            <CircularProgress sx={{ mb: 2 }} />
+            <Typography variant="h6">Loading System Status...</Typography>
+          </CardContent>
+        </Card>
+      </Box>
     );
   }
 
   return (
-    <Box>
-      <Grid container spacing={3}>
+    <Box sx={{ 
+      width: '100%', 
+      display: 'flex', 
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100%'
+    }}>
+      <Grid container spacing={3} sx={{ 
+        width: '100%', 
+        maxWidth: '1200px',
+        justifyContent: 'center'
+      }}>
         {/* System Overview */}
         <Grid item xs={12}>
           <Card>

@@ -256,8 +256,18 @@ export default function ChartBuilder({ analytics }) {
   }
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-      <Grid container spacing={3} sx={{ width: '100%', maxWidth: '100%' }}>
+    <Box sx={{ 
+      width: '100%', 
+      display: 'flex', 
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100%'
+    }}>
+      <Grid container spacing={3} sx={{ 
+        width: '100%', 
+        maxWidth: '1400px',
+        justifyContent: 'center'
+      }}>
         {/* Chart Controls */}
         <Grid item xs={12} lg={3} xl={2}>
           <Card sx={{ height: 'fit-content', position: 'sticky', top: 16 }}>

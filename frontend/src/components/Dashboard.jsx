@@ -218,8 +218,18 @@ export default function Dashboard() {
     switch (currentTab) {
       case 0:
         return (
-          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Grid container spacing={3} sx={{ width: '100%', maxWidth: '100%' }}>
+          <Box sx={{ 
+            width: '100%', 
+            display: 'flex', 
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '100%'
+          }}>
+            <Grid container spacing={3} sx={{ 
+              width: '100%', 
+              maxWidth: '1200px',
+              justifyContent: 'center'
+            }}>
               <Grid item xs={12} md={6} lg={3}>
                 <Card sx={{ height: '100%' }}>
                   <CardContent>
@@ -345,8 +355,18 @@ export default function Dashboard() {
         );
       case 1:
         return (
-          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Card sx={{ width: '100%', maxWidth: '100%' }}>
+          <Box sx={{ 
+            width: '100%', 
+            display: 'flex', 
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '100%'
+          }}>
+            <Card sx={{ 
+              width: '100%', 
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
                   Data Upload
@@ -484,7 +504,7 @@ export default function Dashboard() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'flex-start',
+          justifyContent: 'center',
           overflow: 'hidden',
         }}>
           {loading && <LinearProgress sx={{ mb: 2, width: '100%' }} />}
@@ -494,6 +514,7 @@ export default function Dashboard() {
             justifyContent: 'center',
             alignItems: 'center',
             flex: 1,
+            padding: '0 20px',
           }}>
             {renderTabContent()}
           </Box>

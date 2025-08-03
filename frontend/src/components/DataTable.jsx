@@ -43,17 +43,29 @@ export default function DataTable({ analytics }) {
 
   if (!analytics) {
     return (
-      <Card>
-        <CardContent sx={{ textAlign: 'center', py: 4 }}>
-          <VisibilityIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2 }} />
-          <Typography variant="h6" color="text.secondary" gutterBottom>
-            No Data Available
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Upload and analyze data first to view the data table
-          </Typography>
-        </CardContent>
-      </Card>
+      <Box sx={{ 
+        width: '100%', 
+        display: 'flex', 
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100%'
+      }}>
+        <Card sx={{ 
+          width: '100%', 
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}>
+          <CardContent sx={{ textAlign: 'center', py: 4 }}>
+            <VisibilityIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2 }} />
+            <Typography variant="h6" color="text.secondary" gutterBottom>
+              No Data Available
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Upload and analyze data first to view the data table
+            </Typography>
+          </CardContent>
+        </Card>
+      </Box>
     );
   }
 
@@ -140,8 +152,19 @@ export default function DataTable({ analytics }) {
   );
 
   return (
-    <Card>
-      <CardContent>
+    <Box sx={{ 
+      width: '100%', 
+      display: 'flex', 
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100%'
+    }}>
+      <Card sx={{ 
+        width: '100%', 
+        maxWidth: '1400px',
+        margin: '0 auto'
+      }}>
+        <CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
           <Typography variant="h6">Data Table</Typography>
           <Box sx={{ display: 'flex', gap: 1 }}>
@@ -271,5 +294,6 @@ export default function DataTable({ analytics }) {
         />
       </CardContent>
     </Card>
+    </Box>
   );
 } 
