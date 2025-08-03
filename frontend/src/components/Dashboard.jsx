@@ -62,7 +62,8 @@ import SystemStatus from './SystemStatus';
 import SettingsPanel from './SettingsPanel';
 import axios from 'axios';
 
-const drawerWidth = 280;
+  const drawerWidth = 280;
+  const isLargeScreen = window.innerWidth >= 1200;
 
 export default function Dashboard() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -464,15 +465,20 @@ export default function Dashboard() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          p: { xs: 2, sm: 3, lg: 4 },
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           mt: 8,
+          minHeight: 'calc(100vh - 64px)',
         }}
       >
-        <Container maxWidth="xl">
+        <Box sx={{ 
+          width: '100%', 
+          maxWidth: '100%',
+          height: '100%'
+        }}>
           {loading && <LinearProgress sx={{ mb: 2 }} />}
           {renderTabContent()}
-        </Container>
+        </Box>
       </Box>
       
       <Menu

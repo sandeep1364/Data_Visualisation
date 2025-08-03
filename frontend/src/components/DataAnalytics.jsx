@@ -115,7 +115,7 @@ export default function DataAnalytics({ analytics, loading, onAnalyze, uploadDat
     <Box>
       <Grid container spacing={3}>
         {/* Summary Cards */}
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -133,7 +133,7 @@ export default function DataAnalytics({ analytics, loading, onAnalyze, uploadDat
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -151,7 +151,7 @@ export default function DataAnalytics({ analytics, loading, onAnalyze, uploadDat
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -169,7 +169,7 @@ export default function DataAnalytics({ analytics, loading, onAnalyze, uploadDat
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -197,11 +197,11 @@ export default function DataAnalytics({ analytics, loading, onAnalyze, uploadDat
               </Box>
             </AccordionSummary>
             <AccordionDetails>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={6}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} lg={5}>
                   <Typography variant="subtitle1" gutterBottom>Data Schema</Typography>
-                  <TableContainer component={Paper} variant="outlined">
-                    <Table size="small">
+                  <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: 400 }}>
+                    <Table size="small" stickyHeader>
                       <TableHead>
                         <TableRow>
                           <TableCell>Column</TableCell>
@@ -238,9 +238,9 @@ export default function DataAnalytics({ analytics, loading, onAnalyze, uploadDat
                     </Table>
                   </TableContainer>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} lg={7}>
                   <Typography variant="subtitle1" gutterBottom>Sample Data</Typography>
-                  <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: 300 }}>
+                  <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: 400 }}>
                     <Table size="small" stickyHeader>
                       <TableHead>
                         <TableRow>

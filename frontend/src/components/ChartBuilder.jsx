@@ -196,18 +196,21 @@ export default function ChartBuilder({ analytics }) {
       title: chartConfig.title || `${chartTypes.find(t => t.value === chartType)?.label} of ${yColumn} vs ${xColumn}`,
       xaxis: {
         title: xColumn,
-        showgrid: chartConfig.showGrid
+        showgrid: chartConfig.showGrid,
+        automargin: true
       },
       yaxis: {
         title: yColumn,
-        showgrid: chartConfig.showGrid
+        showgrid: chartConfig.showGrid,
+        automargin: true
       },
       showlegend: chartConfig.showLegend,
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
       font: { color: '#333' },
-      margin: { l: 60, r: 60, t: 80, b: 60 },
-      autosize: true
+      margin: { l: 80, r: 80, t: 100, b: 80 },
+      autosize: true,
+      height: undefined
     };
 
     setChartData(plotData);
@@ -256,8 +259,8 @@ export default function ChartBuilder({ analytics }) {
     <Box>
       <Grid container spacing={3}>
         {/* Chart Controls */}
-        <Grid item xs={12} md={4}>
-          <Card>
+        <Grid item xs={12} lg={3} xl={2}>
+          <Card sx={{ height: 'fit-content', position: 'sticky', top: 16 }}>
             <CardContent>
               <Typography variant="h6" gutterBottom>
                 Chart Configuration
@@ -431,7 +434,7 @@ export default function ChartBuilder({ analytics }) {
         </Grid>
 
         {/* Chart Display */}
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} lg={9} xl={10}>
           <Card>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
@@ -452,18 +455,32 @@ export default function ChartBuilder({ analytics }) {
                     data={chartData}
                     layout={chartLayout}
                     config={{
-                      responsive: chartConfig.responsive,
+                      responsive: true,
                       displayModeBar: true,
                       modeBarButtonsToRemove: ['pan2d', 'lasso2d', 'select2d'],
-                      displaylogo: false
+                      displaylogo: false,
+                      toImageButtonOptions: {
+                        format: 'png',
+                        filename: 'chart',
+                        height: 800,
+                        width: 1200,
+                        scale: 2
+                      }
                     }}
-                    style={{ width: '100%', height: '500px' }}
+                    style={{ width: '100%', height: '70vh', minHeight: '600px' }}
                     useResizeHandler={true}
+                    onInitialized={(figure) => {
+                      // Force resize after initialization
+                      setTimeout(() => {
+                        window.dispatchEvent(new Event('resize'));
+                      }, 100);
+                    }}
                   />
                 </Paper>
               ) : (
                 <Box sx={{ 
-                  height: 500, 
+                  height: '70vh', 
+                  minHeight: '600px',
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center',
